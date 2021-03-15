@@ -27,7 +27,6 @@ export default function Dashboard() {
 					<AddFileButton currentFolder={folder} />
 					<AddFolderButton currentFolder={folder} />
 				</div>
-				{/* <Folder folder={folder} /> */}
 				{childFolders.length > 0 && (
 					<div className='d-flex flex-wrap'>
 						{childFolders.map((childFolder) => (
