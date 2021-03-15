@@ -9,10 +9,10 @@ export default function FolderBreadCrumbs({ currentFolder }) {
 	return (
 		<Breadcrumb
 			className='flex-grow-1'
-			listProps={{ className: 'bg-white pl-0 m-0' }}>
+			listProps={{ className: 'bg-light pl-0 m-0' }}>
 			{[...path].map((folder, index) => (
 				<Breadcrumb.Item
-					key={folder.Id}
+					key={`BC-${folder.Id}`}
 					linkAs={Link}
 					linkProps={{
 						to: {
@@ -27,6 +27,7 @@ export default function FolderBreadCrumbs({ currentFolder }) {
 			))}
 			{currentFolder && (
 				<Breadcrumb.Item
+					key={currentFolder.id}
 					className='text-truncate d-inline-block'
 					style={{ maxWidth: '250px' }}
 					active>
