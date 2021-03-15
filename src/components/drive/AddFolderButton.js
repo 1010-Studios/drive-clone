@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, Form } from 'react-bootstrap';
+import { Button, Modal, Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderPlus } from '@fortawesome/free-solid-svg-icons';
 import { database } from '../../firebase';
@@ -42,9 +42,14 @@ export default function AddFolderButton({ currentFolder }) {
 
 	return (
 		<>
-			<Button onClick={openModal} variant='outline-success' size='sm'>
-				<FontAwesomeIcon icon={faFolderPlus} />
-			</Button>
+			<OverlayTrigger
+				placement='top'
+				delay={{ show: 100, hide: 100 }}
+				overlay={<Tooltip id='btn-new-file'>New Folder</Tooltip>}>
+				<Button onClick={openModal} variant='outline-success' size='sm'>
+					<FontAwesomeIcon icon={faFolderPlus} />
+				</Button>
+			</OverlayTrigger>
 			<Modal show={open} onHide={closeModal}>
 				<Form onSubmit={handleSubmit}>
 					<Modal.Body>
