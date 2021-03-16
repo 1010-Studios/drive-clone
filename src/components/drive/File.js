@@ -8,21 +8,20 @@ import { ROOT_FOLDER } from '../../hooks/useFolder';
 
 export default function File({ file, folder }) {
 	const { currentUser } = useAuth();
+	const currentFolder = folder;
+
+	//Delete Button
 	function deleteItems() {
-		const currentFolder = folder;
 		const filePath =
 			currentFolder === ROOT_FOLDER
 				? `${currentFolder.path.join('/')}`
 				: `${currentFolder.path.join('/')}/${currentFolder.name}`;
 
-		//Remove from Storage
-		const delTask = storage
+		storage
 			.ref(`/files/${currentUser.uid}/${filePath}/${file.name}`)
 			.delete(file)
 			.then(() => console.log('Deleted!'))
 			.catch((error) => console.log(`ERROR! ${error}`));
-
-		//Remove from Database
 
 		database.files
 			.where('name', '==', file.name)
@@ -35,8 +34,6 @@ export default function File({ file, folder }) {
 			.catch((error) => {
 				console.log(`ERROR! ${error}`);
 			});
-
-		// console.log(delData);
 	}
 
 	return (
@@ -52,6 +49,7 @@ export default function File({ file, folder }) {
 					<hr />
 					{/* {file.name} */}
 				</Card.Title>
+				<Card.Text></Card.Text>
 				<ButtonGroup className='w-100'>
 					<Button
 						variant='light'
