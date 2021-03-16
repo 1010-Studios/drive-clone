@@ -6,13 +6,7 @@ import { storage, database } from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import { ROOT_FOLDER } from '../../hooks/useFolder';
 import { v4 as uuidV4 } from 'uuid';
-import {
-	Toast,
-	ProgressBar,
-	OverlayTrigger,
-	Tooltip,
-	Button,
-} from 'react-bootstrap';
+import { Toast, ProgressBar, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 export default function AddFileButton({ currentFolder, linkStyle }) {
 	const { currentUser } = useAuth();
