@@ -51,8 +51,8 @@ export default function Dashboard() {
 								key={childFile.id}
 								style={{
 									display: 'flex',
-									maxWidth: '250px',
-									maxHeight: '300px',
+									width: '250px',
+									height: '300px',
 								}}
 								className='p-2 m-1'>
 								<File file={childFile} folder={folder} />

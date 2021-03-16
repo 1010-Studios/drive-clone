@@ -108,16 +108,13 @@ export default function AddFileButton({ currentFolder, linkStyle }) {
 			)}
 
 			{linkStyle === 'link' && (
-				<label
-					for='upload'
-					className='btn-link p-2'
-					style={{ cursor: 'pointer' }}>
+				<label className='btn-link p-2' style={{ cursor: 'pointer' }}>
 					Upload a file?
 					<input
-						id='upload'
-						style={{ display: 'none' }}
 						type='file'
-						onchange={handleUpload}></input>
+						style={{ display: 'none' }}
+						onChange={handleUpload}
+					/>
 				</label>
 			)}
 

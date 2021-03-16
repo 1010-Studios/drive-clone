@@ -38,14 +38,16 @@ export default function File({ file, folder }) {
 
 	return (
 		<Card className='text-center w-250 p-0' style={{ flex: '1' }}>
+			<Card.Header /> {/*Stylistic */}
 			<Card.Body
-				className='text-truncate w-100 p-1'
+				className='w-100 p-1'
 				style={{
+					display: 'flex',
 					overflow: 'hidden',
 					justifyContent: 'center',
 					alignContent: 'center',
 				}}>
-				<Image src={file.url} fluid />
+				<Image src={file.url} />
 			</Card.Body>
 			<Card.Footer className='pt-0'>
 				<hr />
