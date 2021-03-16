@@ -49,7 +49,11 @@ export default function Dashboard() {
 						{childFiles.map((childFile) => (
 							<div
 								key={childFile.id}
-								style={{ maxWidth: '250px', maxHeight: '300px' }}
+								style={{
+									display: 'flex',
+									maxWidth: '250px',
+									maxHeight: '300px',
+								}}
 								className='p-2 m-1'>
 								<File file={childFile} folder={folder} />
 							</div>

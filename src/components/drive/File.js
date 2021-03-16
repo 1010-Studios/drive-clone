@@ -37,17 +37,15 @@ export default function File({ file, folder }) {
 	}
 
 	return (
-		<Card
-			className='text-center w-250'
-			style={{ width: '250px', height: '315px' }}>
+		<Card className='text-center w-250 p-0' style={{ flex: '1' }}>
 			<Card.Body
-				className='text-truncate w-100 p-0'
+				className='text-truncate w-100 p-1'
 				style={{
 					overflow: 'hidden',
 					justifyContent: 'center',
 					alignContent: 'center',
 				}}>
-				<Image src={file.url} fluid thumbnail />
+				<Image src={file.url} fluid />
 			</Card.Body>
 			<Card.Footer className='pt-0'>
 				<hr />
