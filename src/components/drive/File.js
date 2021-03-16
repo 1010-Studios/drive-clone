@@ -1,7 +1,7 @@
 import { faFile, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Button, ButtonGroup, Card } from 'react-bootstrap';
+import { Button, ButtonGroup, Card, Image } from 'react-bootstrap';
 import { storage, database } from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import { ROOT_FOLDER } from '../../hooks/useFolder';
@@ -37,19 +37,20 @@ export default function File({ file, folder }) {
 	}
 
 	return (
-		<Card className='text-center' style={{ width: '250px' }}>
-			<Card.Img variant='top' src={file.url} />
+		<Card
+			className='text-center w-250'
+			style={{ width: '250px', height: '315px' }}>
 			<Card.Body
-				className='text-truncate w-100'
+				className='text-truncate w-100 p-0'
 				style={{
+					overflow: 'hidden',
 					justifyContent: 'center',
 					alignContent: 'center',
 				}}>
-				<Card.Title style={{ fontSize: 'calc(.75rem + .5vh)' }}>
-					<hr />
-					{/* {file.name} */}
-				</Card.Title>
-				<Card.Text></Card.Text>
+				<Image src={file.url} fluid thumbnail />
+			</Card.Body>
+			<Card.Footer className='pt-0'>
+				<hr />
 				<ButtonGroup className='w-100'>
 					<Button
 						variant='light'
@@ -64,7 +65,7 @@ export default function File({ file, folder }) {
 						<FontAwesomeIcon icon={faTrash} />
 					</Button>
 				</ButtonGroup>
-			</Card.Body>
+			</Card.Footer>
 		</Card>
 	);
 }

@@ -22,7 +22,7 @@ export default function Dashboard() {
 				{/* New Stuff Section */}
 				<div className='d-flex align-items-center'>
 					<div className='w-100'>{/*Placeholder Div*/}</div>
-					<AddFileButton currentFolder={folder} />
+					<AddFileButton currentFolder={folder} linkStyle='btn' />
 					<AddFolderButton currentFolder={folder} />
 				</div>
 				<hr />
@@ -41,21 +41,27 @@ export default function Dashboard() {
 					</div>
 				)}
 				{/* Files Section */}
-				{childFolders.length > 0 && childFiles.length > 0 && (
-					<>
-						<hr /> <span>Files</span>
-					</>
-				)}
+				<>
+					<hr /> <span>Files</span>
+				</>
 				{childFiles.length > 0 && (
 					<div className='d-flex flex-wrap'>
 						{childFiles.map((childFile) => (
 							<div
 								key={childFile.id}
-								style={{ maxWidth: '250px' }}
-								className='p-2'>
+								style={{ maxWidth: '250px', maxHeight: '300px' }}
+								className='p-2 m-1'>
 								<File file={childFile} folder={folder} />
 							</div>
 						))}
+					</div>
+				)}
+				{!childFiles.length > 0 && (
+					<div className='d-flex flex-wrap p-2 m-1'>
+						<div>
+							Such empty! Would you like to
+							<AddFileButton currentFolder={folder} linkStyle='link' />
+						</div>
 					</div>
 				)}
 			</Container>
