@@ -6,7 +6,7 @@ import { storage, database } from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
 import { ROOT_FOLDER } from '../../hooks/useFolder';
 import { v4 as uuidV4 } from 'uuid';
-import { Toast, ProgressBar } from 'react-bootstrap';
+import { Toast, ProgressBar, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 export default function AddFileButton({ currentFolder }) {
 	const { currentUser } = useAuth();
@@ -28,7 +28,7 @@ export default function AddFileButton({ currentFolder }) {
 				: `${currentFolder.path.join('/')}/${currentFolder.name}/${file.name}`;
 
 		const uploadTask = storage
-			.ref(`/files/${currentUser.uid}/${filePath}}`)
+			.ref(`/files/${currentUser.uid}/${filePath}`)
 			.put(file);
 
 		uploadTask.on(
@@ -74,6 +74,7 @@ export default function AddFileButton({ currentFolder }) {
 							} else {
 								database.files.add({
 									url: url,
+									path: filePath,
 									name: file.name,
 									createdAt: database.getCurrentTimeStamp,
 									folderID: currentFolder.id,
@@ -88,14 +89,18 @@ export default function AddFileButton({ currentFolder }) {
 
 	return (
 		<>
-			<label className='btn btn-outline-success btn-sm m-0 mr-2'>
-				<FontAwesomeIcon icon={faFileUpload} />
-				<input
-					type='file'
-					onChange={handleUpload}
-					style={{ opacity: 1, position: 'absolute', left: '-9999px' }}
-				/>
-			</label>
+			<OverlayTrigger
+				placement='top'
+				overlay={<Tooltip id='tt-addfile'>Upload New File</Tooltip>}>
+				<label className='btn btn-outline-success btn-sm m-0 mr-2'>
+					<FontAwesomeIcon icon={faFileUpload} style={{ fontSize: '1.5rem' }} />
+					<input
+						type='file'
+						onChange={handleUpload}
+						style={{ opacity: 1, position: 'absolute', left: '-9999px' }}
+					/>
+				</label>
+			</OverlayTrigger>
 
 			{/* Upload status -- only shows on document upload*/}
 			{uploadingFiles.length > 0 &&

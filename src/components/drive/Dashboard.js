@@ -1,8 +1,7 @@
 import React from 'react';
-import { Container, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { useFolder } from '../../hooks/useFolder';
 import AddFolderButton from './AddFolderButton';
-// import FolderBreadCrumbs from './FolderBreadCrumbs';
 import Navbar from './Navbar';
 import Folder from './Folder';
 import File from './File';
@@ -22,8 +21,7 @@ export default function Dashboard() {
 			<Container fluid>
 				{/* New Stuff Section */}
 				<div className='d-flex align-items-center'>
-					{/* <FolderBreadCrumbs currentFolder={folder} /> */}
-
+					<div className='w-100'>{/*Placeholder Div*/}</div>
 					<AddFileButton currentFolder={folder} />
 					<AddFolderButton currentFolder={folder} />
 				</div>
@@ -48,7 +46,6 @@ export default function Dashboard() {
 						<hr /> <span>Files</span>
 					</>
 				)}
-				{/* Files */}
 				{childFiles.length > 0 && (
 					<div className='d-flex flex-wrap'>
 						{childFiles.map((childFile) => (
@@ -56,7 +53,7 @@ export default function Dashboard() {
 								key={childFile.id}
 								style={{ maxWidth: '250px' }}
 								className='p-2'>
-								<File file={childFile} />
+								<File file={childFile} folder={folder} />
 							</div>
 						))}
 					</div>
