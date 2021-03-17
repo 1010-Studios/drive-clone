@@ -38,7 +38,7 @@ export default function File({ file, folder }) {
 
 	return (
 		<Card className='text-center w-250 p-0' style={{ flex: '1' }}>
-			<Card.Header /> {/*Stylistic */}
+			<Card.Header /> {/*Purely for stylistic purposes*/}
 			<Card.Body
 				className='w-100 p-1'
 				style={{

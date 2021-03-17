@@ -27,22 +27,25 @@ export default function Dashboard() {
 				</div>
 				<hr />
 				{/* Folders */}
-				Folders
 				{childFolders.length > 0 && (
-					<div className='d-flex flex-wrap'>
-						{childFolders.map((childFolder) => (
-							<div
-								key={childFolder.id}
-								style={{ maxWidth: '250px' }}
-								className='p-2'>
-								<Folder folder={childFolder} />
-							</div>
-						))}
-					</div>
+					<>
+						Folders
+						<div className='d-flex flex-wrap'>
+							{childFolders.map((childFolder) => (
+								<div
+									key={childFolder.id}
+									style={{ maxWidth: '250px' }}
+									className='p-2'>
+									<Folder folder={childFolder} />
+								</div>
+							))}
+						</div>
+						<hr />
+					</>
 				)}
 				{/* Files Section */}
 				<>
-					<hr /> <span>Files</span>
+					<span>Files</span>
 				</>
 				{childFiles.length > 0 && (
 					<div className='d-flex flex-wrap'>
@@ -51,8 +54,8 @@ export default function Dashboard() {
 								key={childFile.id}
 								style={{
 									display: 'flex',
-									width: '250px',
-									height: '300px',
+									maxWidth: '250px',
+									maxHeight: '300px',
 								}}
 								className='p-2 m-1'>
 								<File file={childFile} folder={folder} />
@@ -60,6 +63,7 @@ export default function Dashboard() {
 						))}
 					</div>
 				)}
+
 				{!childFiles.length > 0 && (
 					<div className='d-flex flex-wrap p-2 m-1'>
 						<div>
