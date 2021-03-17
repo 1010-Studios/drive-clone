@@ -2,8 +2,9 @@
 
 #### Testing credentials:
 
-User: test3@test.ca
-PW: test12
+User: test3@test.ca |
+
+Pass: test12
 
 ### Live View: https://drive-clone.netlify.app
 
