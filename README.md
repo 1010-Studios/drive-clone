@@ -11,7 +11,12 @@ PW: test12
 
 #### Planned Features:
 
--[ ] Edit file names -[x] Delete Files -[ ] Delete/Edit Folders -[x] Thumbnails for Images -[ ] Icons for non-images -[ ] Make/save/edit notes?
+- [ ] Edit file names
+- [x] Delete Files
+- [ ] Delete/Edit Folders
+- [x] Thumbnails for Images
+- [ ] Icons for non-images
+- [ ] Make/save/edit notes?
 
 A drive/dropbox clone, used to hone skills in React and begin learning Bootstrap and Firebase.
 
