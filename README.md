@@ -2,7 +2,7 @@
 
 #### Testing credentials:
 
-User: test3@test.ca |
+User: test3@test.ca
 
 Pass: test12
 
@@ -12,7 +12,7 @@ Pass: test12
 
 #### Planned Features:
 
-- [ ] Edit file names
+- [x] Edit file names
 - [x] Delete Files
 - [ ] Delete/Edit Folders
 - [x] Thumbnails for Images
