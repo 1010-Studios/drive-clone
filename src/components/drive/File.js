@@ -54,7 +54,6 @@ export default function File({ file, folder }) {
 		setName('');
 		closeModal();
 	}
-	console.log(file);
 
 	//Delete Button
 	function deleteItems() {

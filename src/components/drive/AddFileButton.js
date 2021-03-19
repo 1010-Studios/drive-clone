@@ -14,7 +14,6 @@ export default function AddFileButton({ currentFolder, linkStyle }) {
 
 	function handleUpload(e) {
 		const file = e.target.files[0];
-		console.log(file);
 		if (currentFolder == null || file == null) return;
 
 		const id = uuidV4();
