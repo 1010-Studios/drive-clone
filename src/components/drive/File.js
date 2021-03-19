@@ -138,7 +138,8 @@ export default function File({ file, folder }) {
 							<Form.Control
 								type='text'
 								required
-								value={file.name}
+								placeholder={file.name}
+								value={name}
 								onChange={(e) => setName(e.target.value)}
 							/>
 						</Form.Group>
