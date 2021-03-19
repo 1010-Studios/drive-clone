@@ -57,23 +57,25 @@ export default function File({ file, folder }) {
 
 	//Delete Button
 	function deleteItems() {
-		storage
-			.ref(`/files/${currentUser.uid}/${filePath}/${file.name}`)
-			.delete(file)
-			.then(() => console.log('Deleted!'))
-			.catch((error) => console.log(`ERROR! ${error}`));
+		if (window.confirm(`Do you want to delete ${file.name}?`)) {
+			storage
+				.ref(`/files/${currentUser.uid}/${filePath}/${file.name}`)
+				.delete(file)
+				.then(() => console.log('Deleted!'))
+				.catch((error) => console.log(`ERROR! ${error}`));
 
-		database.files
-			.where('name', '==', file.name)
-			.where('userID', '==', currentUser.uid)
-			.where('folderID', '==', currentFolder.id)
-			.get()
-			.then((querySnapshot) => {
-				querySnapshot.docs[0].ref.delete();
-			})
-			.catch((error) => {
-				console.log(`ERROR! ${error}`);
-			});
+			database.files
+				.where('name', '==', file.name)
+				.where('userID', '==', currentUser.uid)
+				.where('folderID', '==', currentFolder.id)
+				.get()
+				.then((querySnapshot) => {
+					querySnapshot.docs[0].ref.delete();
+				})
+				.catch((error) => {
+					console.log(`ERROR! ${error}`);
+				});
+		}
 	}
 
 	return (
@@ -120,7 +122,7 @@ export default function File({ file, folder }) {
 				</Card.Footer>
 			</Card>
 
-			<Modal show={open} onHide={closeModal}>
+			<Modal show={open} onHide={closeModal} centered restoreFocus={false}>
 				<Form onSubmit={handleSubmit}>
 					<Modal.Body>
 						<Form.Group>
