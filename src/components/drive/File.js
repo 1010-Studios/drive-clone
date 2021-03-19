@@ -54,6 +54,7 @@ export default function File({ file, folder }) {
 		setName('');
 		closeModal();
 	}
+	console.log(file);
 
 	//Delete Button
 	function deleteItems() {
@@ -90,7 +91,15 @@ export default function File({ file, folder }) {
 						justifyContent: 'center',
 						alignContent: 'center',
 					}}>
-					<Image src={file.url} />
+					{String(file.type).includes('image') ? (
+						<Image src={file.url} />
+					) : (
+						<FontAwesomeIcon
+							icon={faFile}
+							className='mt-auto mb-auto'
+							style={{ fontSize: '5rem', color: 'lightblue' }}
+						/>
+					)}
 				</Card.Body>
 				<Card.Footer className='pt-0'>
 					<hr />
@@ -130,7 +139,7 @@ export default function File({ file, folder }) {
 							<Form.Control
 								type='text'
 								required
-								value={name}
+								value={file.name}
 								onChange={(e) => setName(e.target.value)}
 							/>
 						</Form.Group>

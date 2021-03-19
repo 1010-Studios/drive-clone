@@ -14,12 +14,13 @@ export default function AddFileButton({ currentFolder, linkStyle }) {
 
 	function handleUpload(e) {
 		const file = e.target.files[0];
+		console.log(file);
 		if (currentFolder == null || file == null) return;
 
 		const id = uuidV4();
 		setUploadingFiles((preUploadingFiles) => [
 			...preUploadingFiles,
-			{ id: id, name: file.name, progress: 0, error: false },
+			{ id: id, name: file.name, type: file.type, progress: 0, error: false },
 		]);
 
 		const filePath =
@@ -76,6 +77,7 @@ export default function AddFileButton({ currentFolder, linkStyle }) {
 									url: url,
 									path: filePath,
 									name: file.name,
+									type: file.type,
 									createdAt: database.getCurrentTimeStamp,
 									folderID: currentFolder.id,
 									userID: currentUser.uid,
